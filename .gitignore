@@ -1,0 +1,19 @@
+# build & IDE
+**/build/
+**/.gradle/
+**/out/
+*.iml
+.idea/
+.kotlin/
+.DS_Store
+local.properties
+
+# IntelliJ Platform Gradle Plugin 2.x 本地缓存
+.intellijPlatform/
+
+*.pem
+*.crt
+
+# Local-only publishing runbook — kept on disk, never committed
+docs/PUBLISHING.md
+docs

@@ -1,0 +1,57 @@
+<idea-plugin>
+    <id>dev.red.yaml2props</id>
+    <!-- name 只能用 marketplace 允许字符集（字母/数字/空格 + .,+_-/:()#'&[]|）；⇄ 非法，用 &amp; 表双向。 -->
+    <name>YAML &amp; Properties Converter</name>
+    <!-- vendor email 为审核要求的可联系邮箱；url 指向 GitHub 仓库（也是用户反馈 / issues 入口）。 -->
+    <vendor email="redorblacck886@gmail.com" url="https://github.com/redorblack/yaml-properties-converter">Red</vendor>
+
+    <!--
+      plugin-structure 规则 DescriptionNotStartingWithLatinCharacters：
+      "The plugin description must start with Latin characters and have at least 40 characters."
+      —— 只要求**开头**是拉丁字符 + 至少 40 字，正文写中文没问题，所以首段英文、其余中文。
+      另有 HttpLinkInDescription 规则：正文里别写 http(s):// 链接（反馈入口指向 vendor url 即可）。
+    -->
+    <description><![CDATA[
+        <p>Convert Spring Boot configuration between YAML and .properties files, fully offline,
+        right inside your IDE. Nothing ever leaves your machine.</p>
+
+        <p><b>✨ 功能</b></p>
+        <ul>
+            <li>YAML &#8644; Properties <b>双向转换</b>，一键切换方向，结果实时预览</li>
+            <li>支持锚点 <code>&amp;anchor</code> / 别名 <code>*alias</code> / 合并键 <code>&lt;&lt;</code>，展开结果与 Spring Boot 运行时行为完全一致</li>
+            <li><b>YAML 格式校验</b>：精确定位到行 / 列，给出中文错误原因与修复建议（Tab 缩进、冒号后缺空格等常见坑）</li>
+            <li>数组 <code>key[n]</code> 还原、多文档 <code>---</code>、properties 转义均正确处理</li>
+        </ul>
+
+        <p><b>🔒 安全承诺</b></p>
+        <ul>
+            <li>数据<b>全程在本地内存处理，不上传任何服务器、无任何网络请求</b></li>
+            <li>可放心处理含 <b>密码 / 密钥</b> 的生产配置，绝无信息泄漏之虞</li>
+            <li>无广告、无遥测、无收费</li>
+        </ul>
+
+        <p><b>打开方式</b>：右侧边栏 <b>YAML⇄Properties</b> 工具窗口，点开即用，图标眼睛会红光一闪。</p>
+
+        <p><b>反馈</b>：Bug 或建议欢迎提到本插件的 <b>GitHub issues</b>（仓库地址见插件详情页的 vendor 链接）。</p>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <p><b>1.0.0</b></p>
+        <ul>
+          <li>YAML &#8644; Properties 双向转换，实时预览、方向交换、复制、清空</li>
+          <li>锚点 / 别名 / 合并键展开，数组 <code>key[n]</code> 还原，多文档 <code>---</code>，properties 转义</li>
+          <li>YAML 格式校验：定位行 / 列 + 中文错误原因与修复建议</li>
+          <li>纯本地离线，无网络请求</li>
+        </ul>
+    ]]></change-notes>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="YAML⇄Properties"
+                    anchor="right"
+                    secondary="true"
+                    icon="/icons/eye.svg"
+                    factoryClass="dev.red.yaml2props.plugin.ConverterToolWindowFactory"/>
+    </extensions>
+</idea-plugin>
